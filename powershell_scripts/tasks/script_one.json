@@ -1,8 +1,0 @@
-{
-    "description": "Run PowerShell script one",
-    "input_method": "environment",
-    "implementations": [
-      {"name": "script_one.ps1", "requirements": ["powershell"]}
-    ]
-  }
-  
