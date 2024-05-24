@@ -1,9 +1,0 @@
-{
-    "name": "my_tasks",
-    "version": "0.1.0",
-    "author": "your_name",
-    "summary": "A module to run a PowerShell script on Windows nodes",
-    "license": "Apache-2.0",
-    "source": "https://example.com/test_scripts",
-    "dependencies": []
-  }
