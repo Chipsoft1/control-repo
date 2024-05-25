@@ -8,8 +8,8 @@ plan powershell_scripts::run_script (
     notice("Result: ${result}")
 
     if $result['status'] == 'success' {
-      # Access the nested output field correctly
-      if $result['value']['_output'] =~ /Script 1 executed successfully/ {
+      # Correctly access the nested output field
+      if $result['value'] && $result['value']['_output'] =~ /Script 1 executed successfully/ {
         notice("script_one succeeded on ${result['target']} with the correct output.")
       } else {
         fail_plan("script_one succeeded on ${result['target']} but did not output the correct success message. Output was: ${result['value']['_output']}")
@@ -25,4 +25,5 @@ plan powershell_scripts::run_script (
 
   run_task('powershell_scripts::script_two', $nodes)
 }
+
 
