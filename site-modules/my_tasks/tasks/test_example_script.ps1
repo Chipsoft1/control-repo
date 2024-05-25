@@ -22,4 +22,4 @@ Write-Log "Running Command 1"
 # [Place your existing script commands here]
 
 # Log the end of the script
-Write-Log "Script Execution Completed
+Write-Log "Script Execution Completed"
