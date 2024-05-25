@@ -3,16 +3,17 @@ plan powershell_scripts::run_script (
 ) {
   $results = run_task('powershell_scripts::script_one', $nodes)
 
+  $proceed = true
   $results.each |$result| {
     # Log the entire result for debugging purposes
     notice("Result: ${result}")
 
     if $result['status'] == 'success' {
-      # Correctly access the nested output field
-      if $result['value'] && $result['value']['_output'] =~ /Script 1 executed successfully/ {
+      if $result['value']['_output'] =~ /Script 1 executed successfully/ {
         notice("script_one succeeded on ${result['target']} with the correct output.")
       } else {
-        fail_plan("script_one succeeded on ${result['target']} but did not output the correct success message. Output was: ${result['value']['_output']}")
+        notice("script_one succeeded on ${result['target']} but did not output the correct success message. Output was: ${result['value']['_output']}")
+        $proceed = false
       }
     } else {
       if $result['_error'] {
@@ -23,7 +24,9 @@ plan powershell_scripts::run_script (
     }
   }
 
-  run_task('powershell_scripts::script_two', $nodes)
+  if $proceed {
+    run_task('powershell_scripts::script_two', $nodes)
+  } else {
+    fail_plan("script_two did not run because script_one did not produce the expected output.")
+  }
 }
-
-
