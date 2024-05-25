@@ -4,7 +4,7 @@ plan powershell_scripts::run_script(
   $results = run_task('powershell_scripts::script_one', $nodes)
   $results.each |$result| {
     if $result['status'] != 'success' {
-      if $result.has_key('_error') {
+      if getvar('result._error') {
         fail_plan("script_one failed on ${result['target']}: ${result['_error']['msg']}")
       } else {
         fail_plan("script_one failed on ${result['target']} with unknown error.")
