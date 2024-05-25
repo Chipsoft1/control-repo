@@ -1,4 +1,4 @@
-plan powershell_scripts::run_scripts(
+plan powershell_scripts::run_script(
   TargetSpec $nodes
 ) {
   $results = run_task('powershell_scripts::script_one', $nodes)
