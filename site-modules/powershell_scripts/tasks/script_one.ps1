@@ -1,6 +1,7 @@
-$output = Write-Output "Dit is script 1"
+# PowerShell script content
+$output = "Script 1 executed successfully"
 $output | Out-File -FilePath C:\Scripts\script_1-puppet.txt
-Exit 0
+Write-Output $output
 
 # Start of the script
 $logPath = "C:\Scripts\ExampleScript.log"
@@ -17,7 +18,6 @@ Write-Log "Script Execution Started"
 
 # Sample command in the script
 Write-Log "Running Command 1"
-# [Place your existing script commands here]
 
 # Log the end of the script
 Write-Log "Script Execution Completed"
