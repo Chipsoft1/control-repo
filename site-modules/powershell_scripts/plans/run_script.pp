@@ -18,20 +18,5 @@ plan powershell_scripts::run_script (
     }
   }
 
-  $results2 = run_task('powershell_scripts::script_two', $nodes)
-  $results2.each |$result| {
-    if $result['status'] == 'success' {
-      if $result['value'] && $result['value']['_output'] {
-        notice("script_two succeeded on ${result['target']}. Output: ${result['value']['_output']}")
-      } else {
-        notice("script_two succeeded on ${result['target']} but no output was returned.")
-      }
-    } else {
-      if $result.key?('_error') {
-        fail_plan("script_two failed on ${result['target']}: ${result['_error']['msg']}. Full error: ${result['_error']}")
-      } else {
-        fail_plan("script_two failed on ${result['target']} with unknown error. Full result: ${result}")
-      }
-    }
-  }
+  run_task('powershell_scripts::script_two', $nodes)
 }
