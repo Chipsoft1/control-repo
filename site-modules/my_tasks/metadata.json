@@ -1,9 +1,23 @@
 {
-    "name": "my_tasks",
-    "version": "0.1.0",
-    "author": "your_name",
-    "summary": "A module to run a PowerShell script on Windows nodes",
-    "license": "Apache-2.0",
-    "source": "https://example.com/test_scripts",
-    "dependencies": []
+  "name": "my_tasks",
+  "version": "0.1.0",
+  "author": "your_name",
+  "summary": "A module to run a PowerShell script on Windows nodes",
+  "license": "Apache-2.0",
+  "source": "https://example.com/test_scripts",
+  "dependencies": [],
+  "tasks": {
+    "run_script_with_param": {
+      "description": "Run PowerShell script with klantcode parameter",
+      "parameters": {
+        "klantcode": {
+          "description": "The klantcode to be processed",
+          "type": "String"
+        }
+      },
+      "implementations": [
+        { "name": "run_script_param.ps1", "requirements": ["powershell"] }
+      ]
+    }
   }
+}
