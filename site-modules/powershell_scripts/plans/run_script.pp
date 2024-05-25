@@ -1,4 +1,4 @@
-plan powershell_scripts::run_script(
+plan powershell_scripts::run_script (
   TargetSpec $nodes
 ) {
   $results = run_task('powershell_scripts::script_one', $nodes)
@@ -10,7 +10,7 @@ plan powershell_scripts::run_script(
         notice("script_one succeeded on ${result['target']} but no output was returned.")
       }
     } else {
-      if $result.dig('_error', 'msg') {
+      if $result['_error'] {
         fail_plan("script_one failed on ${result['target']}: ${result['_error']['msg']}. Full error: ${result['_error']}")
       } else {
         fail_plan("script_one failed on ${result['target']} with unknown error. Full result: ${result}")
