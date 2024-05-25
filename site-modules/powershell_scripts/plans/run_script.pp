@@ -5,7 +5,7 @@ plan powershell_scripts::run_script (
 
   $success_nodes = $results.filter |$result| {
     if $result['status'] == 'success' {
-      if $result['value'] && $result['value']['_output'] == 'Script 1 executed successfully' {
+      if $result.dig('value', '_output') == 'Script 1 executed successfully' {
         notice("script_one succeeded on ${result['target']}.")
         true
       } else {
@@ -27,4 +27,3 @@ plan powershell_scripts::run_script (
 
   run_task('powershell_scripts::script_two', $success_nodes)
 }
-
