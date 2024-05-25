@@ -8,7 +8,7 @@ class my_tasks::test_class {
   # Deploy the PowerShell script to the node
   file { 'C:/Scripts/ExampleScriptPuppet.ps1':
     ensure  => 'file',
-    content => template('profile/ExampleScriptPuppet.ps1.erb'),
+    content => template('profile/ExampleScriptPuppet.ps1'),
   }
 
   # Ensure the log directory exists
