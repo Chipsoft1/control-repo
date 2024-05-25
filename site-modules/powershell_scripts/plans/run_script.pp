@@ -3,9 +3,15 @@ plan powershell_scripts::run_script (
 ) {
   $results = run_task('powershell_scripts::script_one', $nodes)
 
-  $results.each |$result| {
+  $success_nodes = $results.filter |$result| {
     if $result['status'] == 'success' {
-      notice("script_one succeeded on ${result['target']}.")
+      if $result['value'] && $result['value']['_output'] == 'Script 1 executed successfully' {
+        notice("script_one succeeded on ${result['target']}.")
+        true
+      } else {
+        notice("script_one did not return the expected output on ${result['target']}.")
+        false
+      }
     } else {
       if $result['_error'] {
         fail_plan("script_one failed on ${result['target']}: ${result['_error']['msg']}")
@@ -13,7 +19,11 @@ plan powershell_scripts::run_script (
         fail_plan("script_one failed on ${result['target']} with unknown error.")
       }
     }
+  }.map |$result| { $result['target'] }
+
+  if $success_nodes.empty? {
+    fail_plan("No nodes succeeded with the expected output from script_one.")
   }
 
-  run_task('powershell_scripts::script_two', $nodes)
+  run_task('powershell_scripts::script_two', $success_nodes)
 }
