@@ -3,12 +3,16 @@ plan powershell_scripts::run_script(
 ) {
   $results = run_task('powershell_scripts::script_one', $nodes)
   $results.each |$result| {
-    if $result['status'] != 'success' {
-      if getvar('result._error') {
-        fail_plan("script_one failed on ${result['target']}: ${result['_error']['msg']}")
-      } else {
-        fail_plan("script_one failed on ${result['target']} with unknown error.")
+    if $result.ok {
+      if $result['status'] != 'success' {
+        if $result.dig('_error', 'msg') {
+          fail_plan("script_one failed on ${result['target']}: ${result.dig('_error', 'msg')}")
+        } else {
+          fail_plan("script_one failed on ${result['target']} with unknown error.")
+        }
       }
+    } else {
+      fail_plan("script_one failed on ${result['target']} with unknown error.")
     }
   }
 
