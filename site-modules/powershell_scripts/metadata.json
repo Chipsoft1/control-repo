@@ -1,10 +1,10 @@
 {
-    "name": "yourusername-powershell_scripts",
+    "name": "chipsoft1-powershell_scripts",
     "version": "0.1.0",
     "author": "Your Name",
     "summary": "Puppet module for running PowerShell scripts",
     "license": "Apache-2.0",
-    "source": "https://github.com/yourusername/powershell_scripts",
+    "source": "https://github.com/chipsoft1/powershell_scripts",
     "dependencies": [
       {
         "name": "puppetlabs-powershell",
