@@ -1,4 +1,4 @@
-plan run_scripts(
+plan powershell_scripts::run_script(
   TargetSpec $nodes,
   String $script_one,
   String $script_two
