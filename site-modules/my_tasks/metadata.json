@@ -7,7 +7,7 @@
   "source": "https://example.com/test_scripts",
   "dependencies": [],
   "tasks": {
-    "run_script_with_param": {
+    "run_script_param": {
       "description": "Run PowerShell script with klantcode parameter",
       "parameters": {
         "klantcode": {
