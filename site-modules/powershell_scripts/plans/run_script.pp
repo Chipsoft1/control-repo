@@ -13,7 +13,7 @@ plan powershell_scripts::run_script (
         false
       }
     } else {
-      if $result['_error'] {
+      if $result.dig('_error', 'msg') {
         fail_plan("script_one failed on ${result['target']}: ${result['_error']['msg']}")
       } else {
         fail_plan("script_one failed on ${result['target']} with unknown error.")
