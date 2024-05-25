@@ -1,0 +1,7 @@
+{
+    "description": "Run PowerShell script ",
+    "input_method": "environment",
+    "implementations": [
+      {"name": "test_example_script.ps1", "requirements": ["powershell"]}
+    ]
+  }
