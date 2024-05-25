@@ -15,6 +15,3 @@ forge 'https://forge.puppet.com'
 #mod 'apache',
 #  git:    'https://github.com/puppetlabs/puppetlabs-apache',
 #  branch: 'docs_experiment'
-mod 'Chipsoft1-powershell_scripts',
-  git: 'https://github.com/Chipsoft1/control-repo.git',
-  ref: 'main'
