@@ -5,6 +5,9 @@ plan powershell_scripts::run_script (
 
   $results.each |$result| {
     if $result['status'] == 'success' {
+      # Debugging: Print the result to check the structure
+      notice("Result: ${result['result']}")
+
       if $result['result']['stdout'] =~ /Script 1 executed successfully/ {
         notice("script_one succeeded on ${result['target']} with the correct output.")
       } else {
