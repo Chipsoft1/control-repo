@@ -1,7 +1,7 @@
 {
-    "description": "Run PowerShell script ",
-    "input_method": "environment",
-    "implementations": [
-      {"name": "test_example_script.ps1", "requirements": ["powershell"]}
-    ]
-  }
+  "description": "Run PowerShell script one",
+  "input_method": "environment",
+  "implementations": [
+    {"name": "WieDitLeest.ps1", "requirements": ["powershell"]}
+  ]
+}

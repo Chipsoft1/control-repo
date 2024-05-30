@@ -11,3 +11,6 @@ $t = @"
 
 for ($i=0;$i -lt $t.length;$i++) {write-host $t[$i] -NoNewline -ForegroundColor Red -BackgroundColor Black}
 
+$time = Get-Date -Format yyyy-MM-dd-hhmm
+
+$t | Out-File -FilePath "C:\Scripts\output-WieDitLeest_$time.txt"
