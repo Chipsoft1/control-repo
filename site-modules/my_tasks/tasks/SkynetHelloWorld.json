@@ -1,0 +1,8 @@
+{
+    "description": "Run PowerShell script one",
+    "input_method": "environment",
+    "implementations": [
+      {"name": "SkynetHelloWorld.ps1", "requirements": ["powershell"]}
+    ]
+  }
+  
