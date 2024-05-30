@@ -10,7 +10,7 @@ $logPath = "C:\Scripts\ExampleScript.log"
 function Write-Log {
     param ([string]$message)
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Add-Content -Path $logPath -Value "${timestamp}: $message"
+    Add-Content2 -Path $logPath -Value "${timestamp}: $message"
 }
 
 # Log the start of the script
